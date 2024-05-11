@@ -6,19 +6,23 @@ import PrimaryButton from '@/Components/PrimaryButton';
 import TextInput from '@/Components/TextInput';
 import { Head, Link, useForm } from '@inertiajs/react';
 
-export default function Register() {
+export default function CreateAccount(props) {
     const { data, setData, post, processing, errors, reset } = useForm({
-        name: '',
-        email: '',
-        password: '',
-        password_confirmation: '',
+        address1: '',
+        address2: '',
+        zip: '',
+        city: '',
+        state: '',
+        // userId: props.userId
+        userId:props.userId
+        
     });
 
-    useEffect(() => {
-        return () => {
-            reset('password', 'password_confirmation');
-        };
-    }, []);
+    // useEffect(() => {
+    //     return () => {
+    //         reset('password', 'password_confirmation');
+    //     };
+    // }, []);
 
     const handleOnChange = (event) => {
         setData(event.target.name, event.target.type === 'checkbox' ? event.target.checked : event.target.value);
@@ -27,7 +31,7 @@ export default function Register() {
     const submit = (e) => {
         e.preventDefault();
 
-        post(route('register'));
+        post(route('create-account'));
     };
 
     return (
@@ -39,36 +43,55 @@ export default function Register() {
                     {/* <InputLabel htmlFor="name" value="Name" /> */}
 
                     <TextInput
-                        id="name"
-                        name="name"
-                        value={data.name}
+                        id="address1"
+                        name="address1"
+                        value={data.address1}
                         className="mt-1 block w-full"
-                        autoComplete="name"
+                        autoComplete="address1"
                         isFocused={true}
                         onChange={handleOnChange}
                         required
-                        htmlFor="name"
-                        labelName="Name"
+                        htmlFor="address1"
+                        labelName="address1"
 
                     />
 
-                    <InputError message={errors.name} className="mt-2" />
+                    <InputError message={errors.address1} className="mt-2" />
+                </div>
+                <div>
+                    {/* <InputLabel htmlFor="name" value="Name" /> */}
+
+                    <TextInput
+                        id="address2"
+                        name="address2"
+                        value={data.address2}
+                        className="mt-1 block w-full"
+                        autoComplete="address2"
+                        isFocused={true}
+                        onChange={handleOnChange}
+                        required
+                        htmlFor="address2"
+                        labelName="address2"
+
+                    />
+
+                    <InputError message={errors.address1} className="mt-2" />
                 </div>
 
                 <div className="mt-4">
                     {/* <InputLabel htmlFor="email" value="Email" /> */}
 
                     <TextInput
-                        id="email"
-                        type="email"
-                        name="email"
-                        value={data.email}
+                        id="state"
+                        type="text"
+                        name="state"
+                        value={data.state}
                         className="mt-1 block w-full"
                         autoComplete="username"
                         onChange={handleOnChange}
                         required
-                        htmlFor="email"
-                        labelName="Email"
+                        htmlFor="state"
+                        labelName="state"
                     />
 
                     <InputError message={errors.email} className="mt-2" />
@@ -78,15 +101,15 @@ export default function Register() {
                     {/* <InputLabel htmlFor="password" value="Password" /> */}
 
                     <TextInput
-                        id="password"
-                        type="password"
-                        name="password"
-                        value={data.password}
+                        id="city"
+                        type="text"
+                        name="city"
+                        value={data.city}
                         className="mt-1 block w-full"
-                        autoComplete="new-password"
+                        autoComplete="city"
                         onChange={handleOnChange}
                         required
-                        labelName="Password"
+                        labelName="city"
                     />
 
                     <InputError message={errors.password} className="mt-2" />
@@ -96,28 +119,21 @@ export default function Register() {
                     {/* <InputLabel htmlFor="password_confirmation" value="Confirm Password" /> */}
 
                     <TextInput
-                        id="password_confirmation"
-                        type="password"
-                        name="password_confirmation"
-                        value={data.password_confirmation}
+                        id="zip"
+                        type="text"
+                        name="zip"
+                        value={data.zip}
                         className="mt-1 block w-full"
-                        autoComplete="new-password"
+                        autoComplete="zip"
                         onChange={handleOnChange}
                         required
-                        labelName="Password Confirmation"
+                        labelName="Zip"
                     />
 
                     <InputError message={errors.password_confirmation} className="mt-2" />
                 </div>
 
                 <div className="flex items-center justify-end mt-4">
-                    <Link
-                        href={route('login')}
-                        className="underline text-sm text-gray-600 hover:text-gray-900 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
-                    >
-                        Already registered?
-                    </Link>
-
                     <PrimaryButton className="ml-4" disabled={processing}>
                         Register
                     </PrimaryButton>

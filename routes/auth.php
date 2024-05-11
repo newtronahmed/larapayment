@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AccountController;
 use App\Http\Controllers\Auth\AuthenticatedSessionController;
 use App\Http\Controllers\Auth\ConfirmablePasswordController;
 use App\Http\Controllers\Auth\EmailVerificationNotificationController;
@@ -14,6 +15,10 @@ use Illuminate\Support\Facades\Route;
 Route::middleware('guest')->group(function () {
     Route::get('register', [RegisteredUserController::class, 'create'])
                 ->name('register');
+    Route::get('create-account/{userId}', [AccountController::class, 'index'])
+                ->name('create-account-page');
+    Route::post('create-account', [AccountController::class, 'create'])
+                ->name('create-account');
 
     Route::post('register', [RegisteredUserController::class, 'store']);
 

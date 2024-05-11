@@ -58,7 +58,7 @@ return [
         ],
 
         'single' => [
-            'driver' => 'single',
+            'driver' => env('App_ENV') == 'local' ? 'single': 'errorlog',
             'path' => storage_path('logs/laravel.log'),
             'level' => env('LOG_LEVEL', 'debug'),
         ],

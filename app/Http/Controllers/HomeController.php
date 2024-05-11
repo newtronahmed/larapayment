@@ -10,7 +10,7 @@ use Inertia\Inertia;
 class HomeController extends Controller
 {
     use StripeHelperTrait;
-    
+
     public function index()
     {
         $account = User::find(auth()->user()->id)->account;

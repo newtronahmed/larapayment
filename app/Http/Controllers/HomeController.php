@@ -19,7 +19,7 @@ class HomeController extends Controller
 
         $payment_method = $this->getPaymentMethods($account->customer_id);
 
-        return Inertia::render('Dashboard', [
+        return Inertia::render('Profile/Index', [
             'user' => User::find(auth()->user()->id),
             'account' => $account,
             'client_secret' => $secret,

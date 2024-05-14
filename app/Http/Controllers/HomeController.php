@@ -26,4 +26,15 @@ class HomeController extends Controller
             'payment_method' => $payment_method
         ]);
     }
+
+    public function transactions(){
+        $account = User::find(auth()->user()->id)->account;
+
+        // $stripe->balanceTransactions->all(['limit' => 3]);
+        $transactions = $this->getTransactions($account->customer_id);
+
+        return Inertia::render('Transactions/Index', [
+            'data' => $transactions
+        ]);
+    }
 }

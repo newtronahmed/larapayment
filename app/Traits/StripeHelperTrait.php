@@ -52,4 +52,13 @@ trait StripeHelperTrait
             ]);
         }
     }
+
+    public function getTransactions ($customer_id){
+        // $stripe = \Stripe\StripeClient::;
+        $customer = \Stripe\Customer::retrieve($customer_id);
+        $transactions = $customer->balanceTransactions->all(['limit' => 10]); // Adjust the limit as needed
+        return $transactions;
+        // $stripe->balanceTransactions->all(['limit' => 3]);
+
+    }
 }

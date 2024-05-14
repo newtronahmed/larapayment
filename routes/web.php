@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\TransactionController;
 use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
@@ -27,6 +28,8 @@ Route::get('/', function () {
 });
 
 Route::get('/dashboard', [HomeController::class, 'index'])->middleware(['auth', 'verified'])->name('dashboard');
+Route::post('/send-money', [TransactionController::class, 'store'])
+->middleware(['auth', 'verified'])->name('send-money');
 
 Route::middleware('auth')->group(function () {
     // Route::get('/profile', [ProfileController::class, 'index'])->name('profile.index');

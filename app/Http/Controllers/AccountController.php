@@ -22,21 +22,27 @@ class AccountController extends Controller
             "userId"=> $userId
         ]);
     }
-    public function create(Request $request){
+    public function create(Request $request, ){
         // $user_id = session('registered_user_id');
-        $user = User::find($request->userId)->first();
-        $customer = $this->createCustomer($user->email, $user->name);
+        try {
+            $user = User::find($request->userId);
+            $customer = $this->createCustomer($user->email, $user->name);
+    
+            Account::create([
+                'user_id' => $user->id,
+                'balance' => 0,
+                'customer_id' => $customer->id,
+                'address1' => $request->address1,
+                'address2' => $request->address2,
+                'city' => $request->city,
+                'state' => $request->state,
+                'zip' => $request->zip
+            ]);
 
-        Account::create([
-            'user_id' => $user->id,
-            'balance' => 0,
-            'customer_id' => $customer->id,
-            'address1' => $request->address1,
-            'address2' => $request->address2,
-            'city' => $request->city,
-            'state' => $request->state,
-            'zip' => $request->zip
-        ]);
+        }catch(\Exception $e){
+            $user->delete();
+            throw $e;
+        }
 
         event(new Registered($user));
 

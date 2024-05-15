@@ -13,17 +13,26 @@ class HomeController extends Controller
 
     public function index()
     {
-        $account = User::find(auth()->user()->id)->account;
-
-        $secret = $this->createSetupIntent($account->customer_id);
-
-        $payment_method = $this->getPaymentMethods($account->customer_id);
+        try {
+            //code...
+            $account = User::find(auth()->user()->id)->account;
+    
+            $secret = $this->createSetupIntent($account->customer_id);
+    
+            $payment_method = $this->getPaymentMethods($account->customer_id);
+        } catch (\Exception $e) {
+            $account = null;
+            $secret = null;
+            $payment_method = null;
+            $error = $e->getMessage();
+        }
 
         return Inertia::render('Profile/Index', [
             'user' => User::find(auth()->user()->id),
             'account' => $account,
             'client_secret' => $secret,
-            'payment_method' => $payment_method
+            'payment_method' => $payment_method,
+            'error' => $error ?? null
         ]);
     }
 

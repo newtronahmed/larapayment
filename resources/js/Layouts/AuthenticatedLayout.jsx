@@ -143,12 +143,13 @@ export default function Authenticated({ auth, header, children }) {
                            <path d="M5.5 13L5.5 13.009" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
                            <path d="M18.5 10.9922L18.5 11.0012" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
                         </svg>
-                        <Link
+                        <NavLink
                            href={route('dashboard')}
                            className="ms-3"
+                           active={route().current('dashboard')}
                         >
                            Transfer Money
-                        </Link>
+                        </NavLink>
                      </a>
                   </li>
 
@@ -160,12 +161,12 @@ export default function Authenticated({ auth, header, children }) {
                            <path d="M8 7H15" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
                            <path d="M8 11H11" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
                         </svg>
-                        <Link
+                        <NavLink
                            href={route('dashboard')}
                            className="flex-1 ms-3 whitespace-nowrap"
                         >
                            Transactions
-                        </Link>
+                        </NavLink>
                         <span class="inline-flex items-center justify-center w-3 h-3 p-3 ms-3 text-sm font-medium text-blue-800 bg-blue-100 rounded-full dark:bg-blue-900 dark:text-blue-300"></span>
                      </a>
                   </li>

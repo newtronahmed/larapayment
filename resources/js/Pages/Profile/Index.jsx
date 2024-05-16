@@ -1,5 +1,5 @@
 import React, { useReducer, useState } from 'react'
-import {router} from '@inertiajs/react'
+import {Head, router} from '@inertiajs/react'
 import { Elements } from '@stripe/react-stripe-js'
 import { loadStripe } from '@stripe/stripe-js'
 import Navbar from '../../Components/Navbar'
@@ -41,7 +41,7 @@ const Profile = ({ account, user, errors, client_secret, payment_method, auth,})
         errors={errors}
         header={<h2 className="font-semibold text-xl text-gray-800 leading-tight">Dashboard</h2>}
       >
-
+<Head title="Send Money" />
         <main className="profile-page">
           <section className="relative block" style={{ height: "500px" }}>
             <div

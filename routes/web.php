@@ -28,6 +28,7 @@ Route::get('/', function () {
 });
 
 Route::get('/dashboard', [HomeController::class, 'index'])->middleware(['auth', 'verified'])->name('dashboard');
+Route::get('/transactions', [HomeController::class, 'transactions'])->middleware(['auth', 'verified'])->name('transactions');
 Route::post('/send-money', [TransactionController::class, 'store'])
 ->middleware(['auth', 'verified'])->name('send-money');
 

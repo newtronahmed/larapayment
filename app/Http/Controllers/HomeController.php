@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Transaction;
 use App\Models\User;
 use App\Traits\StripeHelperTrait;
 use Illuminate\Http\Request;
@@ -37,11 +38,12 @@ class HomeController extends Controller
     }
 
     public function transactions(){
-        $account = User::find(auth()->user()->id)->account;
+        // $account = User::find(auth()->user()->id)->account;
 
         // $stripe->balanceTransactions->all(['limit' => 3]);
-        $transactions = $this->getTransactions($account->customer_id);
+        // $transactions = $this->getTransactions($account->customer_id);
 
+        $transactions = Transaction::where('user_from', auth()->id())->orWhere('user_to', auth()->id())->get();
         return Inertia::render('Transactions/Index', [
             'data' => $transactions
         ]);

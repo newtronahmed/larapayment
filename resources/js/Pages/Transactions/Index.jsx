@@ -3,14 +3,14 @@ import { Head } from '@inertiajs/react';
 
 export default function Transactions(props) {
     console.log(props.data)
-    const row = () => {
+    const Rows = () => {
         return props.data.map((each) => {
-            <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
+            return (<tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
                 <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                    {each.user_from}
+                    {each.user_from.name}
                 </th>
                 <td class="px-6 py-4">
-                    {each.user_to}
+                    {each.user_to.name}
                 </td>
                 <td class="px-6 py-4">
                     {each.amount}
@@ -21,7 +21,7 @@ export default function Transactions(props) {
                 <td class="px-6 py-4">
                     <a href="#" class="font-medium text-blue-600 dark:text-blue-500 hover:underline">Edit</a>
                 </td>
-            </tr>
+            </tr>)
         })
     }
     return (
@@ -58,7 +58,7 @@ export default function Transactions(props) {
                     </thead>
                     <tbody>
                         {
-                            props.data.length > 1 ? row() : <div className='my-2 p-2 '> Empty</div>
+                            props.data.length >= 1 ? <Rows /> : <div className='my-2 p-2 '> Empty</div>
                             
                         }
 

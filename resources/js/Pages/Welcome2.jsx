@@ -1,3 +1,4 @@
+import ApplicationLogo from '@/Components/ApplicationLogo';
 import { Link, Head } from '@inertiajs/react';
 
 export default function Welcome(props) {
@@ -8,8 +9,8 @@ export default function Welcome(props) {
                 <nav class="bg-white border-gray-200 px-4 lg:px-6 py-2.5 dark:bg-gray-800">
                     <div class="flex flex-wrap justify-between items-center mx-auto max-w-screen-xl">
                         <a href="https://flowbite.com" class="flex items-center">
-                            <img src="https://flowbite.com/docs/images/logo.svg" class="mr-3 h-6 sm:h-9" alt="Flowbite Logo" />
-                            <span class="self-center text-xl font-semibold whitespace-nowrap dark:text-white">Flowbite</span>
+                            <ApplicationLogo  className="h-16"/>
+                            <span class="self-center text-xl font-semibold whitespace-nowrap dark:text-white">Sendimoney</span>
                         </a>
                         <div class="flex items-center lg:order-2">
                             {/* <a href="#" class="text-gray-800 dark:text-white hover:bg-gray-50 focus:ring-4 focus:ring-gray-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 dark:hover:bg-gray-700 focus:outline-none dark:focus:ring-gray-800">Log in</a> */}
@@ -236,8 +237,8 @@ export default function Welcome(props) {
                     <div class="md:flex md:justify-between">
                         <div class="mb-6 md:mb-0">
                             <a href="https://flowbite.com" class="flex items-center">
-                                <img src="https://flowbite.com/docs/images/logo.svg" class="mr-3 h-8" alt="FlowBite Logo" />
-                                <span class="self-center text-2xl font-semibold whitespace-nowrap dark:text-white">Flowbite</span>
+                                <ApplicationLogo className="h-16" />
+                                <span class="self-center text-2xl font-semibold whitespace-nowrap dark:text-white">Sendimoney</span>
                             </a>
                         </div>
                         <div class="grid grid-cols-2 gap-8 sm:gap-6 sm:grid-cols-3">
@@ -245,7 +246,7 @@ export default function Welcome(props) {
                                 <h2 class="mb-6 text-sm font-semibold text-gray-900 uppercase dark:text-white">Resources</h2>
                                 <ul class="text-gray-600 dark:text-gray-400">
                                     <li class="mb-4">
-                                        <a href="https://flowbite.com" class="hover:underline">Flowbite</a>
+                                        <a href="https://flowbite.com" class="hover:underline">Sendimoney</a>
                                     </li>
                                     <li>
                                         <a href="https://tailwindcss.com/" class="hover:underline">Tailwind CSS</a>

@@ -43,7 +43,7 @@ class HomeController extends Controller
         // $stripe->balanceTransactions->all(['limit' => 3]);
         // $transactions = $this->getTransactions($account->customer_id);
 
-        $transactions = Transaction::where('user_from', auth()->id())->orWhere('user_to', auth()->id())->get();
+        $transactions = Transaction::with('userFrom:id,name', 'userTo:id,name')->where('user_from', auth()->id())->orWhere('user_to', auth()->id())->get();
         return Inertia::render('Transactions/Index', [
             'data' => $transactions
         ]);

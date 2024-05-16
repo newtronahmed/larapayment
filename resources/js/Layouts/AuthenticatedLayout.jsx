@@ -162,7 +162,7 @@ export default function Authenticated({ auth, header, children }) {
                            <path d="M8 11H11" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
                         </svg>
                         <NavLink
-                           href={route('dashboard')}
+                           href={route('transactions')}
                            className="flex-1 ms-3 whitespace-nowrap"
                         >
                            Transactions

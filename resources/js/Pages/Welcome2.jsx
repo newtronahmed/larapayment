@@ -5,8 +5,8 @@ export default function Welcome(props) {
     return (
         <>
             <Head title="Welcome" />
-            <header>
-                <nav class="bg-white border-gray-200 px-4 lg:px-6 py-2.5 dark:bg-gray-800">
+            <div>
+                <div class="bg-white border-gray-200 px-4 lg:px-6 py-2.5 dark:bg-gray-800">
                     <div class="flex flex-wrap justify-between items-center mx-auto max-w-screen-xl">
                         <a href="https://flowbite.com" class="flex items-center">
                             <ApplicationLogo  className="h-16"/>
@@ -57,8 +57,8 @@ export default function Welcome(props) {
                             </ul>
                         </div>
                     </div>
-                </nav>
-            </header>
+                </div>
+            </div>
             <section class="bg-white dark:bg-gray-900">
                 <div class="grid py-8 px-4 mx-auto max-w-screen-xl lg:gap-8 xl:gap-0 lg:py-16 lg:grid-cols-12">
                     <div class="place-self-center mr-auto lg:col-span-7">
